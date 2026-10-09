@@ -1,0 +1,6 @@
+Test ensemble summary (current)
+Number of fold models: 5
+  test_multisine              : ensemble RMSE = 0.003998 V
+  test_arrow_full             : ensemble RMSE = 0.008598 V
+  test_arrow_no_extrapolation : ensemble RMSE = 0.003601 V
+Saved metrics: checkpoints/test_ensemble_metrics.json

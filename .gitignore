@@ -1,1 +1,13 @@
 FineSteerMirror/fsm-benchmark-data/
+__pycache__/
+.venv/
+*.egg-info/
+checkpoints/
+cached_data/
+data/
+logs/
+*.pt
+*.ckpt
+*.pth
+*.npy
+*.npz

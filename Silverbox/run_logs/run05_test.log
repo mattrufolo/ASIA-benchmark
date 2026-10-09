@@ -1,0 +1,8 @@
+/home/mrufolo/ASIA_Extension/Silverbox/prepare.py:178: RuntimeWarning: overflow encountered in square
+  return float(np.sqrt(np.mean((y_true - y_pred) ** 2)))
+Test ensemble summary (current)
+Number of fold models: 5
+  test_multisine              : ensemble RMSE = nan V
+  test_arrow_full             : ensemble RMSE = nan V
+  test_arrow_no_extrapolation : ensemble RMSE = nan V
+Saved metrics: checkpoints/test_ensemble_metrics.json
