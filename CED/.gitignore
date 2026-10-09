@@ -1,0 +1,12 @@
+data/
+artifacts/
+artifacts_smoke/
+.venv/
+__pycache__/
+cached_data/
+checkpoints/
+logs/
+plots/
+*.pyc
+results.tsv
+search_journal.md

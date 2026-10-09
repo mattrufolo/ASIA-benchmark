@@ -1,0 +1,2 @@
+SineSw_train_02
+epoch,window_loss_norm_mse,train_rmse_norm,val_rmse_norm

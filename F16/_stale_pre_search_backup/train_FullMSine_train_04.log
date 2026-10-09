@@ -1,0 +1,2 @@
+FullMSine_train_04
+epoch,window_loss_norm_mse,train_rmse_norm,val_rmse_norm

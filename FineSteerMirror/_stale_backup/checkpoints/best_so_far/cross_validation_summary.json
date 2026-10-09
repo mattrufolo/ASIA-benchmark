@@ -1,0 +1,76 @@
+{
+  "metric": "rmse",
+  "num_folds": 6,
+  "train_rmse_norm_mean": 0.9900705715020498,
+  "train_rmse_norm_std": 0.02402344324395221,
+  "validation_rmse_norm_mean": 0.9902134637037913,
+  "validation_rmse_norm_std": 0.016707706081852472,
+  "train_rmse_raw_mean": 2.8846808011924927e-06,
+  "train_rmse_raw_std": 7.005627799724069e-08,
+  "validation_rmse_raw_mean": 2.884734726649185e-06,
+  "validation_rmse_raw_std": 4.4392141209869314e-08,
+  "best_epoch_mean": 91.66666666666667,
+  "best_epoch_median": 100,
+  "folds": [
+    {
+      "validation_name": "fold_r01",
+      "best_epoch": 100,
+      "checkpoint_path": "checkpoints/best_so_far/fold_r01/model.pt",
+      "log_path": "logs/train_fold_r01.log",
+      "train_rmse_norm": 0.9722126126289368,
+      "validation_rmse_norm": 0.9767595529556274,
+      "train_rmse_raw": 2.833827238646336e-06,
+      "validation_rmse_raw": 2.851299768735771e-06
+    },
+    {
+      "validation_name": "fold_r02",
+      "best_epoch": 100,
+      "checkpoint_path": "checkpoints/best_so_far/fold_r02/model.pt",
+      "log_path": "logs/train_fold_r02.log",
+      "train_rmse_norm": 0.9756823778152466,
+      "validation_rmse_norm": 0.9794806838035583,
+      "train_rmse_raw": 2.8450824629544513e-06,
+      "validation_rmse_raw": 2.8526860660349485e-06
+    },
+    {
+      "validation_name": "fold_r03",
+      "best_epoch": 100,
+      "checkpoint_path": "checkpoints/best_so_far/fold_r03/model.pt",
+      "log_path": "logs/train_fold_r03.log",
+      "train_rmse_norm": 0.9735820293426514,
+      "validation_rmse_norm": 0.9660021066665649,
+      "train_rmse_raw": 2.8453991944843438e-06,
+      "validation_rmse_raw": 2.822133183144615e-06
+    },
+    {
+      "validation_name": "fold_r04",
+      "best_epoch": 75,
+      "checkpoint_path": "checkpoints/best_so_far/fold_r04/model.pt",
+      "log_path": "logs/train_fold_r04.log",
+      "train_rmse_norm": 1.0237914323806763,
+      "validation_rmse_norm": 1.0039273500442505,
+      "train_rmse_raw": 2.9832142445229692e-06,
+      "validation_rmse_raw": 2.9213406378403306e-06
+    },
+    {
+      "validation_name": "fold_r05",
+      "best_epoch": 75,
+      "checkpoint_path": "checkpoints/best_so_far/fold_r05/model.pt",
+      "log_path": "logs/train_fold_r05.log",
+      "train_rmse_norm": 1.0241777896881104,
+      "validation_rmse_norm": 1.0087655782699585,
+      "train_rmse_raw": 2.982605110446457e-06,
+      "validation_rmse_raw": 2.9413322408800013e-06
+    },
+    {
+      "validation_name": "fold_r06",
+      "best_epoch": 100,
+      "checkpoint_path": "checkpoints/best_so_far/fold_r06/model.pt",
+      "log_path": "logs/train_fold_r06.log",
+      "train_rmse_norm": 0.9709771871566772,
+      "validation_rmse_norm": 1.006345510482788,
+      "train_rmse_raw": 2.8179565561003983e-06,
+      "validation_rmse_raw": 2.9196164632594446e-06
+    }
+  ]
+}

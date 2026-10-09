@@ -1,0 +1,71 @@
+{
+  "units": "m/s^2",
+  "checkpoint_set": "current",
+  "num_checkpoints": 8,
+  "output_names": [
+    "acceleration_excitation",
+    "acceleration_wing",
+    "acceleration_payload"
+  ],
+  "per_dataset": {
+    "test_FullMSine_01": {
+      "rmse_per_output": [
+        0.2820803225040436
+      ],
+      "rmse_mean_over_outputs": 0.2820803225040436,
+      "rmse_combined_official_format": 0.2820803225040436
+    },
+    "test_FullMSine_02": {
+      "rmse_per_output": [
+        0.4887863099575043
+      ],
+      "rmse_mean_over_outputs": 0.4887863099575043,
+      "rmse_combined_official_format": 0.4887863099575043
+    },
+    "test_FullMSine_03": {
+      "rmse_per_output": [
+        0.6408005952835083
+      ],
+      "rmse_mean_over_outputs": 0.6408005952835083,
+      "rmse_combined_official_format": 0.6408005952835083
+    },
+    "test_SineSw_01": {
+      "rmse_per_output": [
+        0.17259466648101807
+      ],
+      "rmse_mean_over_outputs": 0.17259466648101807,
+      "rmse_combined_official_format": 0.17259466648101807
+    },
+    "test_SineSw_02": {
+      "rmse_per_output": [
+        0.287011057138443
+      ],
+      "rmse_mean_over_outputs": 0.287011057138443,
+      "rmse_combined_official_format": 0.287011057138443
+    },
+    "test_SineSw_03": {
+      "rmse_per_output": [
+        0.3964669108390808
+      ],
+      "rmse_mean_over_outputs": 0.3964669108390808,
+      "rmse_combined_official_format": 0.3964669108390808
+    }
+  },
+  "overall_mean_rmse": 0.37795664370059967,
+  "official_format_rmse_list": [
+    0.2820803225040436,
+    0.4887863099575043,
+    0.6408005952835083,
+    0.17259466648101807,
+    0.287011057138443,
+    0.3964669108390808
+  ],
+  "official_format_dataset_order": [
+    "test_FullMSine_01",
+    "test_FullMSine_02",
+    "test_FullMSine_03",
+    "test_SineSw_01",
+    "test_SineSw_02",
+    "test_SineSw_03"
+  ]
+}

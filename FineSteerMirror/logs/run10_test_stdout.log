@@ -1,0 +1,21 @@
+Evaluating ensemble of 6 fold checkpoints (current) on 9 official test sequences.
+
+level01:
+  RMSE to submit: 6.121e-01 µm
+  displacement_1: 5.209e-01 µm (42.34%)
+  displacement_2: 6.935e-01 µm (51.84%)
+  displacement_3: 6.220e-01 µm (41.64%)
+level02:
+  RMSE to submit: 1.241e+00 µm
+  displacement_1: 1.064e+00 µm (43.22%)
+  displacement_2: 1.407e+00 µm (52.64%)
+  displacement_3: 1.251e+00 µm (41.94%)
+level03:
+  RMSE to submit: 1.947e+00 µm
+  displacement_1: 1.670e+00 µm (45.67%)
+  displacement_2: 2.202e+00 µm (55.47%)
+  displacement_3: 1.968e+00 µm (44.09%)
+
+Overall mean RMSE (across 3 amplitude levels) = 1.267e+00 µm
+Saved metrics: checkpoints/test_metrics.json
+Monitoring only -- never use this to choose between candidates. See program.md.

@@ -1,0 +1,37 @@
+{
+  "benchmark_name": "WienerHammerBenchMark",
+  "sampling_time": 1.953125e-05,
+  "history_window": 50,
+  "num_folds": 5,
+  "train_sequences": [
+    {
+      "name": "fold_1",
+      "num_samples": 19990
+    },
+    {
+      "name": "fold_2",
+      "num_samples": 19990
+    },
+    {
+      "name": "fold_3",
+      "num_samples": 19990
+    },
+    {
+      "name": "fold_4",
+      "num_samples": 19990
+    },
+    {
+      "name": "fold_5",
+      "num_samples": 19990
+    }
+  ],
+  "test_sequence": {
+    "name": "test",
+    "num_samples": 78750,
+    "warmup": 0
+  },
+  "notes": [
+    "train and test are two slices of ONE continuous recording (like CED), so contiguous folds of the single train recording are used for leave-one-fold-out CV -- see WienerHammerBenchMark_description.md Section 5.",
+    "Report units: u, y both in Volts. The official submission template reports RMSE in millivolts (RMSE_V * 1000)."
+  ]
+}

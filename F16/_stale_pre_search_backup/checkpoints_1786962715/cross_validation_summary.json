@@ -1,0 +1,96 @@
+{
+  "metric": "rmse",
+  "num_folds": 8,
+  "train_rmse_norm_mean": 0.4828450120985508,
+  "train_rmse_norm_std": 0.013462719694391903,
+  "validation_rmse_norm_mean": 0.46592724323272705,
+  "validation_rmse_norm_std": 0.2951853965179093,
+  "train_rmse_raw_mean": 0.3948953337967396,
+  "train_rmse_raw_std": 0.020939079788821528,
+  "validation_rmse_raw_mean": 0.3650505323894322,
+  "validation_rmse_raw_std": 0.20714619907045836,
+  "best_epoch_mean": 275.0,
+  "best_epoch_median": 275,
+  "folds": [
+    {
+      "validation_name": "FullMSine_train_01",
+      "best_epoch": 225,
+      "checkpoint_path": "checkpoints/FullMSine_train_01/model.pt",
+      "log_path": "logs/train_FullMSine_train_01.log",
+      "train_rmse_norm": 0.47845157980918884,
+      "validation_rmse_norm": 0.19293691217899323,
+      "train_rmse_raw": 0.4122311770915985,
+      "validation_rmse_raw": 0.1662333458662033
+    },
+    {
+      "validation_name": "FullMSine_train_02",
+      "best_epoch": 300,
+      "checkpoint_path": "checkpoints/FullMSine_train_02/model.pt",
+      "log_path": "logs/train_FullMSine_train_02.log",
+      "train_rmse_norm": 0.46628233790397644,
+      "validation_rmse_norm": 0.49935927987098694,
+      "train_rmse_raw": 0.389438271522522,
+      "validation_rmse_raw": 0.4170640707015991
+    },
+    {
+      "validation_name": "FullMSine_train_03",
+      "best_epoch": 300,
+      "checkpoint_path": "checkpoints/FullMSine_train_03/model.pt",
+      "log_path": "logs/train_FullMSine_train_03.log",
+      "train_rmse_norm": 0.4908038079738617,
+      "validation_rmse_norm": 0.745641827583313,
+      "train_rmse_raw": 0.37955614924430847,
+      "validation_rmse_raw": 0.576631486415863
+    },
+    {
+      "validation_name": "FullMSine_train_04",
+      "best_epoch": 300,
+      "checkpoint_path": "checkpoints/FullMSine_train_04/model.pt",
+      "log_path": "logs/train_FullMSine_train_04.log",
+      "train_rmse_norm": 0.5135111212730408,
+      "validation_rmse_norm": 1.0299317836761475,
+      "train_rmse_raw": 0.3628808557987213,
+      "validation_rmse_raw": 0.7278178334236145
+    },
+    {
+      "validation_name": "SineSw_train_01",
+      "best_epoch": 275,
+      "checkpoint_path": "checkpoints/SineSw_train_01/model.pt",
+      "log_path": "logs/train_SineSw_train_01.log",
+      "train_rmse_norm": 0.4789259433746338,
+      "validation_rmse_norm": 0.05862453579902649,
+      "train_rmse_raw": 0.4257075786590576,
+      "validation_rmse_raw": 0.05211016908288002
+    },
+    {
+      "validation_name": "SineSw_train_02",
+      "best_epoch": 250,
+      "checkpoint_path": "checkpoints/SineSw_train_02/model.pt",
+      "log_path": "logs/train_SineSw_train_02.log",
+      "train_rmse_norm": 0.4719698131084442,
+      "validation_rmse_norm": 0.24973709881305695,
+      "train_rmse_raw": 0.4135892689228058,
+      "validation_rmse_raw": 0.21884573996067047
+    },
+    {
+      "validation_name": "SineSw_train_03",
+      "best_epoch": 275,
+      "checkpoint_path": "checkpoints/SineSw_train_03/model.pt",
+      "log_path": "logs/train_SineSw_train_03.log",
+      "train_rmse_norm": 0.48412996530532837,
+      "validation_rmse_norm": 0.3972605764865875,
+      "train_rmse_raw": 0.40400010347366333,
+      "validation_rmse_raw": 0.3315087556838989
+    },
+    {
+      "validation_name": "SineSw_train_04",
+      "best_epoch": 275,
+      "checkpoint_path": "checkpoints/SineSw_train_04/model.pt",
+      "log_path": "logs/train_SineSw_train_04.log",
+      "train_rmse_norm": 0.47868552803993225,
+      "validation_rmse_norm": 0.5539259314537048,
+      "train_rmse_raw": 0.3717592656612396,
+      "validation_rmse_raw": 0.43019285798072815
+    }
+  ]
+}

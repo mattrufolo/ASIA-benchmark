@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ParallelWH"
+version = "0.1.0"
+description = "Benchmark and training code for -fold cross-validation on ParallelWH Benchmark."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "torch",
+]
+
+[tool.setuptools]
+py-modules = [
+    "model",
+    "prepare",
+    "test",
+    "train",
+]

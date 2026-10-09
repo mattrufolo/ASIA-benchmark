@@ -1,0 +1,16 @@
+commit	val_RMSE	test_RMSE	status	description
+run01	0.949982	81.6031	keep	baseline LSTM (32 hidden, lr 1e-4), hit 1800s time budget at epoch 1625/20000
+run02	0.909256	79.4905	discard	PHYSICAL (symmetric friction, euler, lr 1e-4, long_window_prob 0.15); python-loop epochs too slow (only 375/20000 in budget), best_epoch=0, no real training occurred
+run03	0.768916	76.4577	keep	PHYSICAL (symmetric friction, euler, lr 1e-3, long_window_prob 0.0); higher lr let friction/mass params actually move, clear improvement over run01 and run02
+run04	0.792403	79.9503	discard	PHYSICAL_ASYM (asymmetric friction, euler, lr 1e-3, crops_per_step 1); more epochs (650) but extra friction params didn't help, slightly worse than run03
+run05	0.705730	70.5730	keep	HYBRID (PHYSICAL backbone, symmetric friction, + 16-unit LSTM residual, lr 1e-3, crops_per_step 1); best so far, residual correction helps on top of physics
+run06	0.804801	77.4076	discard	HYBRID + asymmetric_friction True; fewer epochs (575 vs 875), worse than run05, asymmetric backbone + residual compete for limited steps
+run07	0.041978	4.1044	keep	LTC (closed-form continuous-time cell, 32 hidden, lr 1e-3, crops_per_step 1); massive jump over all previous families, test RMSE near paper's closed-loop simulation quality
+run08	0.060199	6.3063	discard	LTC with 64 hidden / [64,64] f_net (vs run07's 32/[32,32]); slightly worse, bigger capacity didn't help at this step budget
+run09	0.047157	6.0992	discard	LTC with tau_max 2.0->5.0 (wired new config knob into build_model_from_config); essentially a tie with run07, marginally worse val RMSE
+run10	0.057384	7.9084	discard	LTC with lr 1e-3->5e-4 (tried to reduce eval-to-eval noise); noise persisted, worse than run07
+run11	0.073916	21.5974	discard	LTC with crops_per_step 1->2 (average 2 windows/step for lower gradient variance); halved epoch count (475 vs 975), noise persisted, worse than run07
+run12	0.143228	28.2282	discard	NEW: HYBRID with LTC residual (added residual_type="LSTM"/"LTC" option to HybridEMPSModel, physical backbone + ClosedFormCTC residual instead of LSTM residual); worse than pure LTC (run07), fewer epochs (500 vs 975) from the extra physical forward pass per step
+run13	0.049293	4.8308	discard	LTC with direct_feedthrough True; close but still slightly worse than run07, test RMSE also slightly worse
+run14	0.046820	18.2947	discard	LTC with weight_decay 0.0->1e-5; val RMSE close to run07 but at an early best_epoch (400) with much worse test RMSE, val/test diverge -- sign of the noisy eval landscape rather than a real improvement
+run15	0.051384	23.4806	discard	LTC with dropout_prob 0.0->0.05; worse than run07 on both val and test RMSE, dropout noise adds to rather than tames the instability

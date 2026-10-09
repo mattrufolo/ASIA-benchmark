@@ -1,0 +1,8 @@
+Test ensemble summary (current)
+Number of fold models: 5
+  test_amp0   : ensemble RMSE = 6.3607 mV
+  test_amp1   : ensemble RMSE = 15.3472 mV
+  test_amp2   : ensemble RMSE = 25.2046 mV
+  test_amp3   : ensemble RMSE = 36.6532 mV
+  test_amp4   : ensemble RMSE = 47.3918 mV
+Saved metrics: checkpoints/test_ensemble_metrics.json

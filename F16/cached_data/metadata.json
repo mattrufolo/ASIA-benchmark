@@ -1,0 +1,20 @@
+{
+  "benchmark_name": "EMPS",
+  "sampling_time": 0.0010000240583173613,
+  "history_window": 20,
+  "validation_fraction": 0.2,
+  "train_split_index": 19877,
+  "validation_sequence": {
+    "num_samples": 24821,
+    "warmup": 19857
+  },
+  "test_sequence": {
+    "num_samples": 24821,
+    "warmup": 0
+  },
+  "notes": [
+    "SINGLE 80/20 split of the train trajectory (DATA_EMPS.mat). Training windows (random short crops) are sampled ONLY from the first 80%. Validation runs the model CONTINUOUSLY from t=0 through the ENTIRE train trajectory, but RMSE is computed ONLY over the last 20% (via this sequence's own `warmup` field, reusing the same mechanism the official test's warmup already uses).",
+    "The official test trajectory (DATA_EMPS_PULSES.mat) is a genuinely separate experiment -- evaluated the same way (continuous simulation, RMSE in mm after the official warmup).",
+    "No ensembling: a single model is trained and evaluated directly."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "units": "micrometers",
+  "checkpoint_set": "current",
+  "num_checkpoints": 6,
+  "output_names": [
+    "displacement_1",
+    "displacement_2",
+    "displacement_3"
+  ],
+  "per_level": {
+    "level01": {
+      "rmse_per_output_um": [
+        1.2344349897830398,
+        1.26684074075456,
+        1.473861971135193
+      ],
+      "nrmse_per_output_pct": [
+        100.3292860306206,
+        94.69757445269852,
+        98.67355655311593
+      ],
+      "rmse_combined_um": 1.3250459005575976
+    },
+    "level02": {
+      "rmse_per_output_um": [
+        2.491090299372445,
+        2.525889158278005,
+        2.93395987682743
+      ],
+      "nrmse_per_output_pct": [
+        101.1654002657562,
+        94.50535313481872,
+        98.3521325903858
+      ],
+      "rmse_combined_um": 2.650313111492627
+    },
+    "level03": {
+      "rmse_per_output_um": [
+        3.753241117010475,
+        3.7580689422611613,
+        4.40236317444942
+      ],
+      "nrmse_per_output_pct": [
+        102.62491758640155,
+        94.65923708431903,
+        98.6149231245129
+      ],
+      "rmse_combined_um": 3.971224411240352
+    }
+  },
+  "overall_mean_rmse_um": 2.6488611410968588
+}

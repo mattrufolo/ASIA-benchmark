@@ -1,0 +1,19 @@
+[fold_r01] 0,1.066629,0.996194,1.001301
+[fold_r01] 1,0.817658,0.996184,1.001286
+[fold_r02] 0,0.378265,0.996063,1.000517
+[fold_r02] 1,0.404597,0.996053,1.000507
+[fold_r03] 0,0.911451,0.996118,0.987178
+[fold_r03] 1,1.548057,0.996106,0.987181
+[fold_r06] 0,0.923695,0.996092,1.029882
+[fold_r06] 1,1.275681,0.996079,1.029863
+[fold_r04] 0,1.053525,0.996248,0.977823
+[fold_r04] 1,0.870303,0.996239,0.977808
+[fold_r05] 0,0.243976,0.996189,0.980105
+[fold_r05] 1,1.256787,0.996174,0.980084
+
+Cross-validation summary (6-fold leave-one-realization-out)
+Mean train RMSE norm      : 0.996141
+Mean validation RMSE norm : 0.996121
+Median best epoch         : 1
+Best-so-far checkpoint    : kept previous
+Training-curve plot       : plots/cross_validation_curves.png
