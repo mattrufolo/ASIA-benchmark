@@ -6,7 +6,7 @@ This repository contains the code accompanying the paper:
 
 [ASIA](https://github.com/dariopi/ASIA) is an agentic AI framework for system identification. An LLM acting as an autonomous coding agent iteratively proposes, implements, and evaluates modelling and training configurations under a fixed, immutable evaluation protocol. The framework is built on the [autoresearch](https://github.com/karpathy/autoresearch) platform and is described in:
 
-> D. Piga and M. Forgione, *ASIA: an AI Agent for System Identification*, IEEE Control Systems Letters, 2026.
+> D. Piga and M. Forgione, *ASIA: an AI Agent for System Identification*, 2026.
 
 In this study, ASIA is extended from two case studies to ten benchmarks from the [Nonlinear Benchmark](https://www.nonlinearbenchmark.org/) repository, all run under the same protocol: a one-hour training budget per run and up to 20 runs per search. Compared with the original study, the agent is Claude Code with Claude Sonnet 5, and each benchmark additionally ships a white-box model following the physics-based description of the corresponding reference paper. The agent can keep and tune it, drop it, or turn it into a grey-box structure.
 
