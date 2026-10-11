@@ -1,31 +1,32 @@
-# NanoDrone 3-Fold Benchmark
+# Wiener-Hammerstein Benchmark
 
-Benchmark and training code for ASIA on the Crazyflie 2.1 nano-drone system.
+Benchmark and training code for ASIA on the Wiener-Hammerstein electronic circuit.
 
-This benchmark follows the nano-drone system identification benchmark introduced by Riccardo Busetto, Elia Cereda, Marco Forgione, Gabriele Maroni, Dario Piga, and Daniele Palossi in *Nonlinear system identification for a nano-drone benchmark* (Control Engineering Practice, 2026).
+This benchmark follows the Wiener-Hammerstein benchmark introduced by Johan Schoukens, Johan Suykens and Lennart Ljung in *Wiener-Hammerstein benchmark* (15th IFAC Symposium on System Identification, 2009).
 
 ## Project Overview
 
-The project trains a neural sequence model to predict the full 12-dimensional drone state (position, velocity, attitude, angular rates) from motor speed sequences.
+The project lets ASIA search for a model that will simulate the output voltage `y(t)` of a circuit made of a linear filter, a diode-based static nonlinearity and a second linear filter, from the input voltage `u(t)`, sampled at 51 200 Hz.
 
-- Training data: three trajectory types (chirp, random, square) — each type contains multiple CSV runs
-- Test data: one held-out trajectory type (melon)
-- Fold structure: leave-one-trajectory-out over the 3 training types (3 folds)
-- Prediction horizon: fixed 50-sample windows (~0.5 s)
-- Initial conditions: drone state at the step preceding each window
-- Cross-validation selection metric: aggregated MAE across the 3 validation folds
-- Test metric: grouped MAE over the four 3D output triples: position, linear velocity, attitude, and angular velocity
+- Training data: estimation data: samples 1-100 000 of the 188 000-sample record (measurement noise about 70 dB below the signal)
+- Test data: samples 100 001-188 000 of the record, never used during the search
+- Fold structure: the estimation record is a single experiment, so validation folds are contiguous segments of it; number of folds: **TODO** (fill in from `prepare.py`)
+- Prediction horizon: free-run **simulation** (no past measured outputs); window length: **TODO** (fill in from `prepare.py`)
+- Initial conditions: **TODO** (fill in from `prepare.py`)
+- Cross-validation selection metric: average over folds of the simulation RMSE (Eq. 1 of the ASIA paper); units: **TODO** (fill in from `prepare.py`)
+- Test metric: RMSE of the simulated output on the test data, in mV (start-up transients are excluded: the sum starts at sample 101 001)
+- ASIA result (extension paper): Grey-WH + GRU residual (lr 3e-3, hidden 16, Tanh), test RMSE 2.81 mV. Grey-WH is a static MLP between two FIR filters implemented as 1-D causal convolutions
 
 ## Main Files of the repository
 
-- [prepare.py](./prepare.py): dataset creation, 50-sample windowing, initial-condition construction, cached data
-- [model.py](./model.py): neural model definition
-- [train.py](./train.py): 3-fold cross-validation training used during the autoresearch loop
-- [test.py](./test.py): denormalized ensemble test evaluation
-- [PROGRAM.md](./PROGRAM.md): instructions for the autonomous experimentation loop
-- [drone_description.md](./drone_description.md): short benchmark description
+- `prepare.py`: dataset creation, windowing, initial-condition construction, cached data
+- `model.py`: model definitions (black-box, white-box and hybrid structures)
+- `train.py`: training and validation used during the autoresearch loop
+- `test.py`: test evaluation of the retained model
+- `PROGRAM.md`: instructions for the autonomous experimentation loop
+- `WH_description.md`: short benchmark description
 
-## Useful Branches for Reprodubility
+## Useful Branches for Reproducibility
 
 The repository includes two additional branches that are useful for reproducing or inspecting the ASIA workflow:
 

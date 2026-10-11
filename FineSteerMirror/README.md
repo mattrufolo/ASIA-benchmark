@@ -1,31 +1,32 @@
-# NanoDrone 3-Fold Benchmark
+# Fine Steering Mirror Benchmark
 
-Benchmark and training code for ASIA on the Crazyflie 2.1 nano-drone system.
+Benchmark and training code for ASIA on the CubeSpec Fine Steering Mirror (FSM).
 
-This benchmark follows the nano-drone system identification benchmark introduced by Riccardo Busetto, Elia Cereda, Marco Forgione, Gabriele Maroni, Dario Piga, and Daniele Palossi in *Nonlinear system identification for a nano-drone benchmark* (Control Engineering Practice, 2026).
+This benchmark follows the Fine Steering Mirror benchmark introduced by Maarten Floren, Lorenzo Peri, Jonathan De Maeyer, Wouter De Munter, Dirk Vandepitte and Jean-Philippe Noël in *Data-driven state-space identification and nonlinearity assessment of the CubeSpec Fine Steering Mirror* (ISMA 2024).
 
 ## Project Overview
 
-The project trains a neural sequence model to predict the full 12-dimensional drone state (position, velocity, attitude, angular rates) from motor speed sequences.
+The project lets ASIA search for a model that will simulate the three mirror displacements measured by capacitive probes from the voltages applied to the three piezo-actuators (3 inputs, 3 outputs, MIMO), sampled at 6400 Hz.
 
-- Training data: three trajectory types (chirp, random, square) — each type contains multiple CSV runs
-- Test data: one held-out trajectory type (melon)
-- Fold structure: leave-one-trajectory-out over the 3 training types (3 folds)
-- Prediction horizon: fixed 50-sample windows (~0.5 s)
-- Initial conditions: drone state at the step preceding each window
-- Cross-validation selection metric: aggregated MAE across the 3 validation folds
-- Test metric: grouped MAE over the four 3D output triples: position, linear velocity, attitude, and angular velocity
+- Training data: orthogonal random-phase multisine data at RMS levels 0.1, 0.2 and 0.3 V; per level, two of the three block-experiments are for training in the reference paper. Exact files used: **TODO** (fill in from `prepare.py`)
+- Test data: the held-out FSM test data of the benchmark. Exact files used: **TODO** (fill in from `prepare.py`)
+- Fold structure: several experiments and excitation levels are available, so validation folds may hold out one experiment at a time; number of folds and which experiments: **TODO** (fill in from `prepare.py`)
+- Prediction horizon: free-run **simulation**; window length: **TODO** (fill in from `prepare.py`)
+- Initial conditions: **TODO** (fill in from `prepare.py`)
+- Cross-validation selection metric: average over folds of the simulation error (Eq. 1 of the ASIA paper); units: **TODO** (fill in from `prepare.py`)
+- Test metric: RMSE of the simulated displacements on the test data, in um (three values reported)
+- ASIA result (extension paper): LSTM (lr 5e-3, hidden `[64]`, ReLU), test RMSE [0.59, 1.2, 1.8] um. This is the only benchmark where ASIA stayed worse than the baselines; the reference results come from frequency-domain subspace identification (model order 28)
 
 ## Main Files of the repository
 
-- [prepare.py](./prepare.py): dataset creation, 50-sample windowing, initial-condition construction, cached data
-- [model.py](./model.py): neural model definition
-- [train.py](./train.py): 3-fold cross-validation training used during the autoresearch loop
-- [test.py](./test.py): denormalized ensemble test evaluation
-- [PROGRAM.md](./PROGRAM.md): instructions for the autonomous experimentation loop
-- [drone_description.md](./drone_description.md): short benchmark description
+- `prepare.py`: dataset creation, windowing, initial-condition construction, cached data
+- `model.py`: model definitions (black-box, white-box and hybrid structures)
+- `train.py`: training and validation used during the autoresearch loop
+- `test.py`: test evaluation of the retained model
+- `PROGRAM.md`: instructions for the autonomous experimentation loop
+- `FSM_description.md`: short benchmark description
 
-## Useful Branches for Reprodubility
+## Useful Branches for Reproducibility
 
 The repository includes two additional branches that are useful for reproducing or inspecting the ASIA workflow:
 

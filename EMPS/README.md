@@ -1,55 +1,54 @@
 # EMPS Benchmark
 
-Benchmark and training code for ASIA on the Electro-Mechanical Positioning System
-(EMPS).
+Benchmark and training code for ASIA on the Electro-Mechanical Positioning System (EMPS).
+
+This benchmark follows the EMPS benchmark introduced by Alexandre Janot, Maxime Gautier and Mathieu Brunot in *Data set and reference models of EMPS* (2019).
 
 ## Project Overview
 
-The project trains a model to predict the load position `qm` from the motor force
-`vir` using the official benchmark data.
+The project lets ASIA search for a model that will simulate the load position `qm` (stored in m, scored in mm) of a closed-loop ball-screw drive from the motor force `vir` [N], sampled at 1 kHz. The system has a pure integrator and asymmetric friction.
 
-- Training data: one official training trajectory (`DATA_EMPS.mat`), split once into
-  a contiguous **80% train / 20% validation** split -- **no folds, no k-fold
-  cross-validation**. The validation sequence spans the whole training trajectory but
-  is only scored on its last 20% (see `PROGRAM.md` / `prepare.py` for details).
-- Test data: one official test trajectory (`DATA_EMPS_PULSES.mat`), used only by
-  `test.py`.
-- Initial conditions: the previous 5 input/output samples.
-- Training uses a small, fixed learning rate for a fixed (large) number of epochs --
-  early stopping is intentionally not implemented, so the model has the chance to fit
-  slow/small patterns over the full trajectory.
+- Training data: the official EMPS training trajectory (`DATA_EMPS`, about 25 s, bang-bang accelerations)
+- Test data: the official test trajectory (`DATA_EMPS_PULSES`, bang-bang accelerations plus applied pulses), exposed as `test` by `nonlinear_benchmarks.EMPS()`
+- Fold structure: none: a single contiguous split of the training trajectory, first 80% for training windows and last 20% for validation (`validation_fraction = 0.2`)
+- Prediction horizon: random training windows of at least 500 samples (`window_min_length`); validation is a free-running simulation over the whole training trajectory, scored on the held-out last 20%
+- Initial conditions: the previous `history_window = 20` samples of input and output (`n_states = 40`)
+- Cross-validation selection metric: validation RMSE on the held-out last 20% of the training trajectory, in normalized units
+- Test metric: RMSE of the simulated position on the test trajectory, in mm (also logged in m)
+- ASIA result (extension paper): CfC (lr 1e-3, hidden `[32, 32]`, Tanh), test RMSE 4.1044 mm. The physics-based white-box model underperformed because velocity and position are running sums of the estimated net force, so small residuals accumulate into a linear drift over the free-running test trajectory
 
-## Main Files
+## Main Files of the repository
 
-- [prepare.py](./prepare.py): dataset creation, cached data, single 80/20
-  train/validation split, initial-condition construction
-- [model.py](./model.py): black-box (LSTM/GRU/RNN/LTC), white-box (physical,
-  symmetric/asymmetric friction), and grey-box (hybrid) model definitions
-- [train.py](./train.py): single-run, fixed-iteration training used during the
-  autoresearch loop
-- [test.py](./test.py): denormalized test evaluation (mm and m) using the saved
-  checkpoint
-- [PROGRAM.md](./PROGRAM.md): instructions for the autonomous experimentation loop
-  (at least 15 iterations: explore model families first, then tune)
-- [EMPS_description.md](./EMPS_description.md): summary of the reference paper
+- `prepare.py`: dataset creation, windowing, initial-condition construction, cached data
+- `model.py`: model definitions (black-box, white-box and hybrid structures)
+- `train.py`: training and validation used during the autoresearch loop
+- `test.py`: test evaluation of the retained model
+- `PROGRAM.md`: instructions for the autonomous experimentation loop
+- `EMPS_description.md`: short benchmark description
 
-## Reference
+## Useful Branches for Reproducibility
 
-A. Janot, M. Gautier, M. Brunot, *"Data Set and Reference Models of EMPS"*, Nonlinear
-System Identification Benchmarks, Eindhoven, 2019.
+The repository includes two additional branches that are useful for reproducing or inspecting the ASIA workflow:
 
-## Quickstart
+- `best`: best-performing model branch
+- `final`: final branch after ASIA completed the experimentation cycle
+
+To switch to the best branch and reproduce the learning of the best model:
 
 ```bash
+git switch best
 uv sync
-uv run prepare.py
 uv run train.py
-uv run test.py
 ```
 
-To evaluate the best-so-far checkpoint tracked across ASIA iterations instead of the
-most recent run:
+To switch to the final branch and inspect the final outputs produced by the AI agent after the end of the experiments:
 
 ```bash
-uv run test.py --checkpoint-set best_so_far
+git switch final
+```
+
+To return to the main branch:
+
+```bash
+git switch main
 ```
