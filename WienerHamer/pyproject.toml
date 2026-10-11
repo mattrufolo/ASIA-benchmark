@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wienerhammerbenchmark"
+version = "0.1.0"
+description = "Benchmark and training code for 5-fold cross-validation on wienerhammerbenchmark benchmark."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "nonlinear_benchmarks",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "torch",
+]
+
+[tool.setuptools]
+py-modules = [
+    "model",
+    "prepare",
+    "test",
+    "train",
+]
